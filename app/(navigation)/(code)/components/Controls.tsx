@@ -1,6 +1,7 @@
 import React from "react";
 
 import styles from "./Controls.module.css";
+import AuthorControl from "./AuthorControl";
 import BackgroundControl from "./BackgroundControl";
 import DarkModeControl from "./DarkModeControl";
 import ExportButton from "./ExportButton";
@@ -18,6 +19,7 @@ const Controls: React.FC = () => {
       <LineNumberControl />
       <PaddingControl />
       <LanguageControl />
+      <AuthorControl />
     </div>
   );
 };

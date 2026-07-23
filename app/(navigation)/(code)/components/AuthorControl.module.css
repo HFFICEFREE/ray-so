@@ -1,0 +1,50 @@
+.authorRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.authorInput {
+  width: 120px;
+}
+
+.positionGroup {
+  display: flex;
+  gap: 4px;
+}
+
+.positionItem {
+  display: flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  transition:
+    color 200ms,
+    background-color 200ms;
+  --focus-ring-color: rgba(255, 255, 255, 0.1);
+
+  &:hover {
+    color: white;
+  }
+
+  &:focus {
+    box-shadow:
+      0 0 0 2px var(--panel-background),
+      0 0 0 4px var(--focus-ring-color);
+    outline: none;
+  }
+
+  &[aria-checked="true"] {
+    background: var(--focus-ring-color);
+    color: white;
+  }
+}

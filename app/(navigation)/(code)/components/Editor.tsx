@@ -22,7 +22,7 @@ import useHotkeys from "../../../../utils/useHotkeys";
 import HighlightedCode from "./HighlightedCode";
 import classNames from "classnames";
 import { derivedFlashMessageAtom } from "../store/flash";
-import { highlightedLinesAtom, showLineNumbersAtom } from "../store";
+import { authorAtom, authorPositionAtom, highlightedLinesAtom, showLineNumbersAtom } from "../store";
 import { LANGUAGES } from "../util/languages";
 
 function indentText(text: string) {
@@ -144,6 +144,8 @@ function Editor() {
   const [isHighlightingLines, setIsHighlightingLines] = useState(false);
   const [showLineNumbers] = useAtom(themeLineNumbersAtom);
   const numberOfLines = (code.match(/\n/g) || []).length;
+  const [author] = useAtom(authorAtom);
+  const [authorPosition] = useAtom(authorPositionAtom);
 
   useHotkeys("f", (event) => {
     event.preventDefault();
@@ -282,6 +284,7 @@ function Editor() {
         data-enable-grammarly="false"
       />
       <HighlightedCode code={code} selectedLanguage={selectedLanguage} />
+      {author ? <div className={classNames(styles.author, styles[`author_${authorPosition}`])}>{author}</div> : null}
     </div>
   );
 }

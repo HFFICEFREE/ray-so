@@ -38,3 +38,27 @@ export const highlightedLinesAtom = atomWithHash<number[]>("highlightedLines", [
     return str ? str.split(",").map(Number) : [];
   },
 });
+
+export type AuthorPosition = "bottom-right" | "bottom-left" | "top-right" | "top-left";
+
+export const authorAtom = atomWithHash<string>("author", "", {
+  serialize(val) {
+    return val;
+  },
+  deserialize(str) {
+    return str || "";
+  },
+});
+
+export const authorPositionAtom = atomWithHash<AuthorPosition>("authorPosition", "bottom-right", {
+  serialize(val) {
+    return val;
+  },
+  deserialize(str) {
+    return (["bottom-right", "bottom-left", "top-right", "top-left"] as AuthorPosition[]).includes(
+      str as AuthorPosition,
+    )
+      ? (str as AuthorPosition)
+      : "bottom-right";
+  },
+});
